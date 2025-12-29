@@ -1,0 +1,135 @@
+.terms-section {
+  padding: 80px 10%;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #fff8f0, #8da9db);
+  color: #1a1a1a;
+}
+
+.terms-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #ff9800;
+}
+
+.terms-header h1 {
+  font-size: 3rem;
+  color: #e65100;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.terms-header p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.terms-timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.terms-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.terms-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #ff9800, #ffc107);
+  border-radius: 8px 0 0 8px;
+}
+
+.terms-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.card-icon {
+  color: #ff9800;
+}
+
+.terms-card h2 {
+  font-size: 1.5rem;
+  color: #e65100;
+  margin: 0;
+}
+
+.card-content p, 
+.card-content ul {
+  color: #333;
+  line-height: 1.7;
+}
+
+.card-content ul {
+  padding-left: 20px;
+}
+
+.card-content ul li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.card-content ul li::before {
+  content: "•";
+  color: #ffb74d;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.card-content a {
+  color: #e65100;
+  text-decoration: none;
+}
+
+.card-content a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .terms-section {
+    padding: 60px 6%;
+  }
+
+  .terms-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .terms-card {
+    padding: 25px;
+  }
+
+  .terms-card h2 {
+    font-size: 1.3rem;
+  }
+}

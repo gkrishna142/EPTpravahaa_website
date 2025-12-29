@@ -1,0 +1,135 @@
+.privacy-policy-section {
+  padding: 80px 10%;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f3f8ff, #e0f7fa);
+  color: #1a1a1a;
+}
+
+.policy-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.header-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #00796b;
+}
+
+.policy-header h1 {
+  font-size: 3rem;
+  color: #004d40;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.policy-header p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.7;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.policy-timeline {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.policy-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.policy-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #00796b, #26a69a);
+  border-radius: 8px 0 0 8px;
+}
+
+.policy-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.card-icon {
+  color: #00796b;
+}
+
+.policy-card h2 {
+  font-size: 1.5rem;
+  color: #004d40;
+  margin: 0;
+}
+
+.card-content p, 
+.card-content ul {
+  color: #333;
+  line-height: 1.7;
+}
+
+.card-content ul {
+  padding-left: 20px;
+}
+
+.card-content ul li {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.card-content ul li::before {
+  content: "•";
+  color: #26a69a;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.card-content a {
+  color: #00796b;
+  text-decoration: none;
+}
+
+.card-content a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .privacy-policy-section {
+    padding: 60px 6%;
+  }
+
+  .policy-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .policy-card {
+    padding: 25px;
+  }
+
+  .policy-card h2 {
+    font-size: 1.3rem;
+  }
+}

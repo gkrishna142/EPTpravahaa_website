@@ -1,0 +1,4 @@
+/* Minimal Bootstrap-compatible styles */
+.App {
+  min-height: 100vh;
+}

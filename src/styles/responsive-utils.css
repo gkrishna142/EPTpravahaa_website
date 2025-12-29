@@ -1,0 +1,175 @@
+/* Responsive Utilities for Display Scaling */
+
+/* Base responsive font sizes */
+:root {
+  --base-font-size: 16px;
+  --scale-125: 0.9375; /* 15px at 125% */
+  --scale-150: 0.875;  /* 14px at 150% */
+}
+
+/* Fluid typography using clamp for better scaling */
+.fluid-text-xs {
+  font-size: clamp(0.75rem, 0.5vw + 0.5rem, 0.875rem);
+}
+
+.fluid-text-sm {
+  font-size: clamp(0.875rem, 0.75vw + 0.5rem, 1rem);
+}
+
+.fluid-text-base {
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.125rem);
+}
+
+.fluid-text-lg {
+  font-size: clamp(1.125rem, 1.25vw + 0.5rem, 1.25rem);
+}
+
+.fluid-text-xl {
+  font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+}
+
+.fluid-text-2xl {
+  font-size: clamp(1.5rem, 2vw + 0.5rem, 2rem);
+}
+
+.fluid-text-3xl {
+  font-size: clamp(1.875rem, 3vw + 0.5rem, 2.5rem);
+}
+
+.fluid-text-4xl {
+  font-size: clamp(2.25rem, 4vw + 0.5rem, 3rem);
+}
+
+/* Responsive spacing */
+.fluid-padding {
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.fluid-margin {
+  margin: clamp(1rem, 2vw, 2rem);
+}
+
+/* Responsive container adjustments */
+@media screen and (min-resolution: 120dpi) {
+  /* 125% scaling */
+  .container-fluid {
+    padding-left: clamp(0.75rem, 2vw, 1.5rem);
+    padding-right: clamp(0.75rem, 2vw, 1.5rem);
+  }
+}
+
+@media screen and (min-resolution: 144dpi) {
+  /* 150% scaling */
+  .container-fluid {
+    padding-left: clamp(0.5rem, 1.5vw, 1rem);
+    padding-right: clamp(0.5rem, 1.5vw, 1rem);
+  }
+}
+
+/* Fix for Bootstrap grid at different scales */
+@media screen and (min-resolution: 120dpi) {
+  .row {
+    margin-left: calc(-0.5 * var(--bs-gutter-x, 0.75rem));
+    margin-right: calc(-0.5 * var(--bs-gutter-x, 0.75rem));
+  }
+  
+  .row > * {
+    padding-left: calc(var(--bs-gutter-x, 0.75rem) * 0.5);
+    padding-right: calc(var(--bs-gutter-x, 0.75rem) * 0.5);
+  }
+}
+
+/* Better image scaling */
+.fluid-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Responsive buttons */
+.btn-fluid {
+  padding: clamp(0.5rem, 1vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
+  font-size: clamp(0.875rem, 1vw, 1rem);
+}
+
+/* Fix for cards at different scales */
+.card-fluid {
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* Responsive navbar */
+@media screen and (min-resolution: 120dpi) {
+  .navbar {
+    padding-top: clamp(0.5rem, 1vw, 0.75rem);
+    padding-bottom: clamp(0.5rem, 1vw, 0.75rem);
+  }
+  
+  .navbar-brand {
+    font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  }
+}
+
+/* Better section spacing */
+.section-fluid {
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+/* Responsive headings */
+h1.fluid {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.2;
+}
+
+h2.fluid {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.3;
+}
+
+h3.fluid {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  line-height: 1.4;
+}
+
+h4.fluid {
+  font-size: clamp(1.125rem, 1.5vw, 1.5rem);
+  line-height: 1.4;
+}
+
+/* Fix overflow issues */
+.overflow-fix {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Better gap spacing for flex/grid */
+.gap-fluid {
+  gap: clamp(0.5rem, 1.5vw, 1.5rem);
+}
+
+/* Responsive border radius */
+.rounded-fluid {
+  border-radius: clamp(0.25rem, 0.5vw, 0.5rem);
+}
+
+/* Media query for high DPI displays */
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Fix for zoom levels */
+@media screen and (min-width: 1920px) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+@media screen and (min-width: 2560px) {
+  .container {
+    max-width: 1800px;
+  }
+}
+

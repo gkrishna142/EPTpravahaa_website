@@ -1,0 +1,245 @@
+/* ========== GLOBAL STYLES ========== */
+.edu-section {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #f4f7ff 0%, #e8efff 100%);
+  color: #222;
+  overflow-x: hidden;
+}
+
+/* ========== HERO SECTION (Redesigned) ========== */
+.edu-hero {
+  background: radial-gradient(circle at 20% 20%, #f4f8ff 0%, #e5ebff 100%);
+  padding: 100px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.edu-hero::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  right: -150px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(107, 145, 224, 0.25), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+
+.edu-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1300px;
+  width: 100%;
+  gap: 60px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.edu-text {
+  flex: 1 1 520px;
+}
+
+.edu-text h1 {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #1a1a1a;
+  margin-bottom: 25px;
+}
+
+.edu-text h1 span {
+  color: #4a73c1;
+  background: linear-gradient(90deg, #4a73c1, #6b91e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.edu-text p {
+  font-size: 1.15rem;
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+.edu-text .coming-soon {
+  display: inline-block;
+  background: rgba(107, 145, 224, 0.1);
+  color: #1a3da1;
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 1rem;
+  margin-bottom: 30px;
+}
+
+.edu-image {
+  flex: 1 1 450px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.edu-image img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 25px;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.edu-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.25);
+}
+
+.glow-circle {
+  position: absolute;
+  bottom: -40px;
+  right: -30px;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(107, 145, 224, 0.4), transparent 70%);
+  border-radius: 50%;
+  filter: blur(25px);
+  z-index: -1;
+}
+
+/* ========== BUTTONS ========== */
+.cta-btn {
+  background: linear-gradient(90deg, #6b91e0, #4a73c1);
+  color: #fff;
+  padding: 14px 38px;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(107, 145, 224, 0.4);
+}
+
+.cta-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(107, 145, 224, 0.6);
+}
+
+.cta-btn:disabled {
+  opacity: 0.85;
+  cursor: not-allowed;
+}
+
+/* ========== FEATURES SECTION ========== */
+.edu-features {
+  background: #fff;
+  padding: 100px 5%;
+  text-align: center;
+}
+
+.edu-features h2 {
+  font-size: 2.6rem;
+  color: #1a3da1;
+  margin-bottom: 60px;
+  font-weight: 700;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: linear-gradient(135deg, #6b91e0, #4a73c1);
+  color: #fff;
+  padding: 40px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(107, 145, 224, 0.4);
+  transition: all 0.4s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(107, 145, 224, 0.6);
+}
+
+.icon-circle {
+  background: rgba(255, 255, 255, 0.2);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.feature-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #f1f1f1;
+}
+
+/* ========== CTA SECTION ========== */
+.edu-cta {
+  background: linear-gradient(135deg, #6b91e0, #4a73c1);
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 20px;
+  margin: 120px auto;
+  max-width: 1000px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.edu-cta h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.edu-cta p {
+  font-size: 1.2rem;
+  line-height: 1.9;
+  color: #f5f5f5;
+  margin-bottom: 30px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 900px) {
+  .edu-hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .edu-text h1 {
+    font-size: 2.5rem;
+  }
+
+  .edu-text p {
+    margin: 0 auto;
+  }
+
+  .edu-image img {
+    max-width: 350px;
+  }
+
+  .edu-cta {
+    margin: 80px 20px;
+  }
+}
