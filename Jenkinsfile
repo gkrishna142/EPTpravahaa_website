@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_USER = 'DOCKERHUB_jayakrishnagolla'
-        DOCKER_CREDS = credentials('dockerhub-creds')
+        DOCKER_CREDS = credentials('DOCKER_HUB')
         EMAIL_TO = 'gollajayakrishna142@gmail.com'
     }
 
