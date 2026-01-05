@@ -11,7 +11,7 @@ pipeline {
 
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/USERNAME/REPO.git'
+                git 'https://github.com/gkrishna142/EPTpravahaa_website.git'
             }
         }
 
