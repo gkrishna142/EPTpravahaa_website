@@ -54,9 +54,8 @@ pipeline {
         stage('Deploy on EC2') {
             steps {
                 sh '''
-                cd /home/ubuntu 
-                mkdir app
-                cd app
+                cd /var/lib/jenkins/deploy
+                docker-compose down || true
                 docker-compose pull
                 docker-compose up -d
                 '''
