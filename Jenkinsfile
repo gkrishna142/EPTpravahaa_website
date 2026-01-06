@@ -54,6 +54,9 @@ pipeline {
         stage('Deploy on EC2') {
             steps {
                 sh '''
+                mkdir -p /var/lib/jenkins/deploy
+                cp docker-compose.yml /var/lib/jenkins/deploy/
+
                 cd /var/lib/jenkins/deploy
                 docker-compose down || true
                 docker-compose pull
