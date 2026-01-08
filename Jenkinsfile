@@ -49,22 +49,23 @@ pipeline {
             steps {
                 sh 'docker push $DOCKERHUB_USER/ept-dashboard'
             }
-        }
-
-        stage('Deploy on EC2') {
-            steps {
-                sh '''
-                mkdir -p /var/lib/jenkins/deploy
-                cp docker-compose.yml /var/lib/jenkins/deploy/
-
-                cd /var/lib/jenkins/deploy
-                docker-compose down || true
-                docker-compose pull
-                docker-compose up -d
-                '''
-            }
-        }
+        } 
+        
+       stage('Deploy on Application EC2') {
+    steps {
+        sh """
+        ssh ubuntu@18.60.227.158 '
+          docker pull $DOCKERHUB_USER/ept-dashboard:latest
+          docker stop ept-dashboard || true
+          docker rm ept-dashboard || true
+          docker run -d \
+            --name ept-dashboard \
+            -p 3000:80 \
+            $DOCKERHUB_USER/ept-dashboard:latest
+        '
+        """
     }
+}
 
     post {
         success {
