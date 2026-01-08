@@ -54,7 +54,7 @@ pipeline {
         stage('Deploy on Application EC2') {
             steps {
                 sh """
-                ssh -o StrictHostKeyChecking=no ubuntu@18.60.227.158 '
+                ssh -o StrictHostKeyChecking=no ubuntu@40.192.119.196 '
                     docker pull $DOCKERHUB_USER/ept-dashboard:latest
                     docker stop ept-dashboard || true
                     docker rm ept-dashboard || true
