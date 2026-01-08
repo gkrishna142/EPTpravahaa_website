@@ -3,8 +3,8 @@ pipeline {
 
     environment {
         DOCKERHUB_USER = 'jayakrishnagolla'
-        DOCKER_CREDS = credentials('DOCKER_HUB')
-        EMAIL_TO = 'gollajayakrishna775@gmail.com'
+        DOCKER_CREDS   = credentials('DOCKER_HUB')
+        EMAIL_TO       = 'gollajayakrishna775@gmail.com'
     }
 
     stages {
@@ -35,7 +35,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKERHUB_USER/ept-dashboard .'
+                sh 'docker build -t $DOCKERHUB_USER/ept-dashboard:latest .'
             }
         }
 
@@ -47,49 +47,52 @@ pipeline {
 
         stage('Push Docker Image') {
             steps {
-                sh 'docker push $DOCKERHUB_USER/ept-dashboard'
+                sh 'docker push $DOCKERHUB_USER/ept-dashboard:latest'
             }
-        } 
-        
-       stage('Deploy on Application EC2') {
-    steps {
-        sh """
-        ssh ubuntu@18.60.227.158 '
-          docker pull $DOCKERHUB_USER/ept-dashboard:latest
-          docker stop ept-dashboard || true
-          docker rm ept-dashboard || true
-          docker run -d \
-            --name ept-dashboard \
-            -p 3000:80 \
-            $DOCKERHUB_USER/ept-dashboard:latest
-        '
-        """
+        }
+
+        stage('Deploy on Application EC2') {
+            steps {
+                sh """
+                ssh -o StrictHostKeyChecking=no ubuntu@18.60.227.158 '
+                    docker pull $DOCKERHUB_USER/ept-dashboard:latest
+                    docker stop ept-dashboard || true
+                    docker rm ept-dashboard || true
+                    docker run -d \
+                        --name ept-dashboard \
+                        -p 3000:80 \
+                        $DOCKERHUB_USER/ept-dashboard:latest
+                '
+                """
+            }
+        }
     }
-}
 
     post {
         success {
             emailext(
-                to: "gollajayakrishna775@gmail.com",
+                to: "gollajayakrishna142@gmail.com",
                 subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                mimeType: 'text/html',
                 body: """
-                <h2>Build Successful</h2>
-                <p>Job: ${env.JOB_NAME}</p>
-                <p>Build Number: ${env.BUILD_NUMBER}</p>
-                <p>URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <h2>Build Successful</h2>
+                    <p>Job: ${env.JOB_NAME}</p>
+                    <p>Build Number: ${env.BUILD_NUMBER}</p>
+                    <p>URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                 """
             )
         }
 
         failure {
             emailext(
-                to: "gollajayakrishna775@gmail.com",
+                to: "gollajayakrishna142@gmail.com",
                 subject: "❌ FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                mimeType: 'text/html',
                 body: """
-                <h2>Build Failed</h2>
-                <p>Job: ${env.JOB_NAME}</p>
-                <p>Build Number: ${env.BUILD_NUMBER}</p>
-                <p>Check logs: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
+                    <h2>Build Failed</h2>
+                    <p>Job: ${env.JOB_NAME}</p>
+                    <p>Build Number: ${env.BUILD_NUMBER}</p>
+                    <p>Check logs: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
                 """
             )
         }
