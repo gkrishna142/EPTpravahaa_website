@@ -1,6 +1,7 @@
+// setupTests.js
 import '@testing-library/jest-dom';
+import { useEffect } from 'react'; // << Add this line
 
-Object.defineProperty(window, 'scrollTo', {
-  value: jest.fn(),
-  writable: true,
-});
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, [pathname]);
