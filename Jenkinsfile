@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKERHUB_USER = 'jayakrishnagolla'
         DOCKER_CREDS   = credentials('DOCKER_HUB')
-        EMAIL_TO       = 'gollajayakrishna775@gmail.com'
     }
 
     stages {
@@ -24,6 +23,27 @@ pipeline {
         stage('Run Tests') {
             steps {
                 sh 'npm test -- --watchAll=false'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                      sonar-scanner \
+                        -Dsonar.projectKey=ept-dashboard \
+                        -Dsonar.projectName=ept-dashboard \
+                        -Dsonar.sources=src
+                    '''
+                }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 5, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
 
@@ -65,36 +85,6 @@ pipeline {
                 '
                 """
             }
-        }
-    }
-
-    post {
-        success {
-            emailext(
-                to: "gollajayakrishna142@gmail.com",
-                subject: "✅ SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                mimeType: 'text/html',
-                body: """
-                    <h2>Build Successful</h2>
-                    <p>Job: ${env.JOB_NAME}</p>
-                    <p>Build Number: ${env.BUILD_NUMBER}</p>
-                    <p>URL: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                """
-            )
-        }
-
-        failure {
-            emailext(
-                to: "gollajayakrishna142@gmail.com",
-                subject: "❌ FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                mimeType: 'text/html',
-                body: """
-                    <h2>Build Failed</h2>
-                    <p>Job: ${env.JOB_NAME}</p>
-                    <p>Build Number: ${env.BUILD_NUMBER}</p>
-                    <p>Check logs: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                """
-            )
         }
     }
 }
