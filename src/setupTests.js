@@ -1,7 +1,5 @@
-import { render } from '@testing-library/react';
-import App from './App';
-import { useEffect } from 'react'; // inside component only
+// src/setupTests.js
+import '@testing-library/jest-dom';
 
-test('renders App component', () => {
-  render(<App />);
-});
+// Mock scrollTo so tests won't fail
+window.scrollTo = jest.fn();
