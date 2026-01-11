@@ -30,7 +30,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube1') {
                     sh '''
-                      sonar-scanner \
+                        ${tool 'sonar-scanner'}/bin/sonar-scanner \
                         -Dsonar.projectKey=ept-dashboard \
                         -Dsonar.projectName=ept-dashboard \
                         -Dsonar.sources=src
