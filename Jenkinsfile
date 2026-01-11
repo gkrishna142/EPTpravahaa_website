@@ -32,7 +32,7 @@ pipeline {
                     sh '''
                         ${tool 'sonar-scanner'}/bin/sonar-scanner \
                         -Dsonar.projectKey=ept-dashboard \
-                        -Dsonar.projectName=ept-dashboard \
+                        
                         -Dsonar.sources=src
                     '''
                 }
