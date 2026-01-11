@@ -6,10 +6,6 @@ pipeline {
         DOCKER_CREDS   = credentials('DOCKER_HUB')
     }
 
-    tools {
-        sonarScanner 'sonar-scanner'
-    }
-
     stages {
 
         stage('Checkout Code') {
@@ -37,8 +33,7 @@ pipeline {
                       sonar-scanner \
                         -Dsonar.projectKey=ept-dashboard \
                         -Dsonar.projectName=ept-dashboard \
-                        -Dsonar.sources=src \
-                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+                        -Dsonar.sources=src
                     '''
                 }
             }
