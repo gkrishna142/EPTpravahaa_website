@@ -29,12 +29,9 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube1') {
-                    sh '''
-                        ${tool 'sonar-scanner'}/bin/sonar-scanner \
-                        -Dsonar.projectKey=ept-dashboard \
-                        
-                        -Dsonar.sources=src
-                    '''
+                sh "sonar-scanner -Dsonar.projectKey=ept-dashboard -Dsonar.sources=src"
+
+
                 }
             }
         }
