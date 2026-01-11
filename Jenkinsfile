@@ -4,7 +4,10 @@ pipeline {
     environment {
         DOCKERHUB_USER = 'jayakrishnagolla'
         DOCKER_CREDS   = credentials('DOCKER_HUB')
-        
+    }
+
+    tools {
+        sonarScanner 'sonar-scanner'
     }
 
     stages {
@@ -31,15 +34,11 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube1') {
                     sh '''
-                       sonar-scanner \
-                      // sonar \
-                          // npm install -g @sonar/scan
-                          // -Dsonar.token=5ee79f5d45522b4a9a15de336abce3530f16a2c0 \
-                          // -Dsonar.projectKey=gkrishna142_ept \
-                          // -Dsonar.organization=gkrishna142
-                         -Dsonar.projectKey=ept-dashboard \
-                         -Dsonar.projectName=ept-dashboard \
-                         -Dsonar.sources=src
+                      sonar-scanner \
+                        -Dsonar.projectKey=ept-dashboard \
+                        -Dsonar.projectName=ept-dashboard \
+                        -Dsonar.sources=src \
+                        -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
                     '''
                 }
             }
